@@ -1,0 +1,21 @@
+[project]
+name = "py-afv"
+version = "0.1.0"
+description = "Python code that implements the active-finite-Voronoi (AFV) model."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "matplotlib>=3.10.8",
+    "numpy>=2.4.0",
+    "scipy>=1.16.3",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
