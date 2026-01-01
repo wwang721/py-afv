@@ -14,11 +14,11 @@ The AFV framework was introduced and developed in, for example,
 
 This project uses [`uv`](https://docs.astral.sh/uv/) for Python package management &ndash; a single tool to replace `pip` (⚡️10-100x faster) and `venv`.
 
-* After cloning the repository, Linux/macOS users (Windows users: see [below](#windows-mingw-gcc)) can synchronize the dependencies with
-    ```bash
-    uv sync
-    ```
-    or use `uv sync --no-dev` if you only intend to run the core code without development dependencies (like `pytest` for running tests).
+After cloning the repository, Linux/macOS users (Windows users: see [below](#windows-mingw-gcc)) can synchronize the dependencies with
+```bash
+uv sync
+```
+or use `uv sync --no-dev` if you only intend to run the core code without development dependencies (like `pytest` for running tests).
 
 **Notes:**
 > * You can install additional packages as needed using `uv add <package_name>`.
@@ -98,7 +98,7 @@ You can also install all optional dependencies (e.g., `tqdm`, `jupyter`) via `uv
 
 See the important [**issues**](https://github.com/wwang721/py-afv/issues?q=is%3Aissue%20state%3Aclosed) for additional context, such as: 
 * [QhullError when 3+ points are collinear #1](https://github.com/wwang721/py-afv/issues/1) [Closed]
-*  [Add customized plotting to examples illustrating access to vertices and edges in AFV model #5](https://github.com/wwang721/py-afv/issues/5) [Completed in PR [#7](https://github.com/wwang721/py-afv/pull/7)]
+*  [Add customized plotting to examples illustrating access to vertices and edges #5](https://github.com/wwang721/py-afv/issues/5) [Completed in PR [#7](https://github.com/wwang721/py-afv/pull/7)]
 
 
 ## License
