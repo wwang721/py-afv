@@ -1,0 +1,21 @@
+name: Zenodo Deployment Display
+
+on:
+  release:
+    types: [published] # Triggers when you create a release
+
+jobs:
+  fake-deploy:
+    runs-on: ubuntu-latest
+    # This is the "magic" part that creates the sidebar entry
+    environment:
+      name: Zenodo  # This name will appear in your sidebar
+      url: https://doi.org/10.5281/zenodo.18091659  # Link to Zenodo repo
+    
+    steps:
+      - name: Acknowledge Zenodo Release
+        run: |
+          echo "GitHub Release detected."
+          echo "Zenodo will automatically archiving this version."
+          echo "This job marks the 'Deployment' as successful for GitHub UI."
+
