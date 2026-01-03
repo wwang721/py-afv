@@ -15,6 +15,8 @@ The AFV framework was introduced and developed in, for example,
 
 This project uses [`uv`](https://docs.astral.sh/uv/) for Python package management &ndash; a single tool to replace `pip` (⚡️10-100x faster) and `venv`.
 
+> Python 3.11.11 is my local development version, so it is set as the minimum requirement; if you'd like to use your own Python, ensure the `which python` version meets this requirement so `uv` doesn't automatically download a different interpreter; otherwise, I recommend letting `uv` manage everything, including the Python interpreter.
+
 After cloning the repository, Linux/macOS users (Windows users: see [below](#windows-mingw-gcc)) can synchronize the dependencies with
 ```bash
 uv sync
@@ -42,7 +44,7 @@ or use `uv sync --no-dev` if you only intend to run the core code without develo
 
 ## Running tests
 
-The current CI status of the test suite, run via [GitHub Actions](/.github/workflows/tests.yml), is shown in the badge at the top of this file.
+Current CI status of the test suite, run via [GitHub Actions](/.github/workflows/tests.yml) on Python 3.12, is shown in the badge at the top of this file.
 
 * To run the full test suite locally (located in [`tests`](/tests/)):
     ```bash
