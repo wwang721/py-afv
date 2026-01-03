@@ -15,6 +15,8 @@ The AFV framework was introduced and developed in, for example,
 
 This project uses [`uv`](https://docs.astral.sh/uv/) for Python package management &ndash; a single tool to replace `pip` (⚡️10-100x faster) and `venv`.
 
+> Python 3.11.11 is my local development version, so it is set as the minimum requirement; if you'd like to use your own Python, ensure the `which python` version meets this requirement so `uv` doesn't automatically download a different interpreter; otherwise, I recommend letting `uv` manage everything, including the Python interpreter.
+
 After cloning the repository, Linux/macOS users (Windows users: see [below](#windows-mingw-gcc)) can synchronize the dependencies with
 ```bash
 uv sync
@@ -25,7 +27,7 @@ or use `uv sync --no-dev` if you only intend to run the core code without develo
 > * You can install additional packages as needed using `uv add <package_name>`.
 > * In some environments (like HPC clusters), global Python path can contaminate the project environment. You may need to add the `PYTHONPATH=""` prefix to all `uv` commands to isolate the project.
 > * The current version requires **Cython** (and therefore a working C/C++ compiler), though [a fallback backend](/afv/finite_voronoi_fallback.py) (based on early pure-Python release) is also implemented. If the Cython compiled extension is accidentally removed or corrupted (you will see a **RuntimeWarning**), you can reinstall the package with `uv sync --reinstall-package py-afv --inexact` (the `--inexact` flag prevents uv from removing any installed packages) or recompile the Cython extension with `uv run setup.py build_ext --inplace`.
-> * For the old pure-Python implementation with no C/C++ compiled dependencies, see **[v0.1.0](https://github.com/wwang721/py-afv/releases/tag/v0.1.0)**.
+> * For the old pure-Python implementation with no C/C++ compiled dependencies, see [v0.1.0](https://github.com/wwang721/py-afv/releases/tag/v0.1.0) (also on [GitLab](https://gitlab.com/wwang721/py-afv/-/releases/v0.1.0)). Alternatively, remove [setup.py](/setup.py) in the root folder before running `uv sync`.
 
 
 #### Windows MinGW GCC
@@ -42,7 +44,7 @@ or use `uv sync --no-dev` if you only intend to run the core code without develo
 
 ## Running tests
 
-The current CI status of the test suite, run via [GitHub Actions](/.github/workflows/tests.yml), is shown in the badge at the top of this file.
+Current CI status of the test suite, run via [GitHub Actions](/.github/workflows/tests.yml) on Python 3.12, is shown in the badge at the top of this file.
 
 * To run the full test suite locally (located in [`tests`](/tests/)):
     ```bash
@@ -63,11 +65,11 @@ The following example demonstrates how to construct a finite-Voronoi diagram:
 import numpy as np
 import afv
 
-N = 100                                      # number of cells
-pts = np.random.rand(N, 2) * 10              # initial positions
+N = 100                                          # number of cells
+pts = np.random.rand(N, 2) * 10                  # initial positions
 params = afv.PhysicalParams()                    # use default parameter values
 sim = afv.FiniteVoronoiSimulator(pts, params)    # initialize the simulator
-sim.plot_2d(show=True)                       # visualize the Voronoi diagram
+sim.plot_2d(show=True)                           # visualize the Voronoi diagram
 ```
 To compute the conservative forces and extract detailed geometric information (e.g., cell areas, vertices, and edges), call:
 ```python
@@ -84,7 +86,7 @@ You can also install all optional dependencies (e.g., `tqdm`, `jupyter`) via `uv
 
 * To launch Jupyter Notebook: after `uv` has synced all extra dependencies, start Jupyter with `uv run jupyter notebook`. Do not use your system-level Jupyter, as the Python kernel of the current `uv` environment is not registered there.
 
-    > Jupyter notebooks and media are stored via [**Git LFS**](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage). If you clone the repository without **Git LFS** installed, these files will appear as small text pointers. You can either install Git LFS to fetch them automatically or download the files manually from the GitHub web interface.
+    > Jupyter notebooks and media are stored via [**Git LFS**](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage). If you clone the repository without **Git LFS** installed, these files will appear as small text pointers. You can either install Git LFS to fetch them automatically or download the files manually (or download the repository as a ZIP archive) from the GitHub web interface.
 
 * Below are representative simulation snapshots generated using the code:
 
@@ -103,6 +105,12 @@ See the important [**issues**](https://github.com/wwang721/py-afv/issues?q=is%3A
 * [QhullError when 3+ points are collinear #1](https://github.com/wwang721/py-afv/issues/1) [Closed - see [comments](https://github.com/wwang721/py-afv/issues/1#issuecomment-3701355742)]
 *  [Add customized plotting to examples illustrating access to vertices and edges #5](https://github.com/wwang721/py-afv/issues/5) [Completed in PR [#7](https://github.com/wwang721/py-afv/pull/7)]
 * [Time step dependence of intercellular adhesion in simulations #8](https://github.com/wwang721/py-afv/issues/8) [Closed in PR [#9](https://github.com/wwang721/py-afv/pull/9)]
+
+
+## Zenodo
+
+The release of this repository is cross-listed on [Zenodo](https://doi.org/10.5281/zenodo.18091659).
+
 
 ## License
 
