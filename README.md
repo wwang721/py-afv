@@ -65,11 +65,11 @@ The following example demonstrates how to construct a finite-Voronoi diagram:
 import numpy as np
 import afv
 
-N = 100                                      # number of cells
-pts = np.random.rand(N, 2) * 10              # initial positions
+N = 100                                          # number of cells
+pts = np.random.rand(N, 2) * 10                  # initial positions
 params = afv.PhysicalParams()                    # use default parameter values
 sim = afv.FiniteVoronoiSimulator(pts, params)    # initialize the simulator
-sim.plot_2d(show=True)                       # visualize the Voronoi diagram
+sim.plot_2d(show=True)                           # visualize the Voronoi diagram
 ```
 To compute the conservative forces and extract detailed geometric information (e.g., cell areas, vertices, and edges), call:
 ```python
@@ -86,7 +86,7 @@ You can also install all optional dependencies (e.g., `tqdm`, `jupyter`) via `uv
 
 * To launch Jupyter Notebook: after `uv` has synced all extra dependencies, start Jupyter with `uv run jupyter notebook`. Do not use your system-level Jupyter, as the Python kernel of the current `uv` environment is not registered there.
 
-    > Jupyter notebooks and media are stored via [**Git LFS**](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage). If you clone the repository without **Git LFS** installed, these files will appear as small text pointers. You can either install Git LFS to fetch them automatically or download the files manually from the GitHub web interface.
+    > Jupyter notebooks and media are stored via [**Git LFS**](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage). If you clone the repository without **Git LFS** installed, these files will appear as small text pointers. You can either install Git LFS to fetch them automatically or download the files manually (or download the repository as a ZIP archive) from the GitHub web interface.
 
 * Below are representative simulation snapshots generated using the code:
 
@@ -105,6 +105,12 @@ See the important [**issues**](https://github.com/wwang721/py-afv/issues?q=is%3A
 * [QhullError when 3+ points are collinear #1](https://github.com/wwang721/py-afv/issues/1) [Closed - see [comments](https://github.com/wwang721/py-afv/issues/1#issuecomment-3701355742)]
 *  [Add customized plotting to examples illustrating access to vertices and edges #5](https://github.com/wwang721/py-afv/issues/5) [Completed in PR [#7](https://github.com/wwang721/py-afv/pull/7)]
 * [Time step dependence of intercellular adhesion in simulations #8](https://github.com/wwang721/py-afv/issues/8) [Closed in PR [#9](https://github.com/wwang721/py-afv/pull/9)]
+
+
+## Zenodo
+
+The release of this repository is cross-listed on [Zenodo](https://doi.org/10.5281/zenodo.18091659).
+
 
 ## License
 
