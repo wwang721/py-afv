@@ -1,7 +1,9 @@
-<!--[![Tests](https://github.com/wwang721/pyafv/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/wwang721/pyafv/actions/workflows/tests.yml?query=branch:main)-->
+[![PyPi](https://img.shields.io/pypi/v/pyafv?color=brightgreen)](https://pypi.org/project/pyafv/)
+[![DOI](https://zenodo.org/badge/1124385738.svg)](https://doi.org/10.5281/zenodo.18091659)
+<!--[![pytest](https://github.com/wwang721/pyafv/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/wwang721/pyafv/actions/workflows/tests.yml?query=branch:main)-->
 [![pytest](https://github.com/wwang721/pyafv/actions/workflows/tests.yml/badge.svg)](https://github.com/wwang721/pyafv/actions/workflows/tests.yml)
 [![codecov](https://codecov.io/github/wwang721/pyafv/branch/main/graph/badge.svg?token=VSXSOX8HVS)](https://codecov.io/github/wwang721/pyafv/tree/main)
-[![DOI](https://zenodo.org/badge/1124385738.svg)](https://doi.org/10.5281/zenodo.18091659)
+
 
 # PyAFV
 
@@ -11,9 +13,17 @@ The AFV framework was introduced and developed in, for example, Refs. [[1](#huan
 
 ## Installation
 
+PyAFV is now available on [PyPI](https://pypi.org/project/pyafv/), so you should be able to install it through `pip`:
+```bash
+pip install pyafv
+```
+Python 3.11.11 is my local development version, so Python@3.11 is set as the minimum requirement. If you just want to use the package, skip directly to [Usage](#usage) section.
+
+### For developers
+
 This project uses [`uv`](https://docs.astral.sh/uv/) for Python package management &ndash; a single tool to replace `pip` (⚡️10-100x faster) and `venv`.
 
-> Python 3.11.11 is my local development version, so it is set as the minimum requirement; if you'd like to use your own Python, ensure the `which python` version meets this requirement so `uv` doesn't automatically download a different interpreter; otherwise, I recommend letting `uv` manage everything, including the Python interpreter.
+> If you'd like to use your own Python, ensure the `which python` version meets this requirement (>=3.11) so `uv` doesn't automatically download a different interpreter; otherwise, I recommend letting `uv` manage everything, including the Python interpreter.
 
 After cloning the repository, Linux/macOS users (Windows users: see [below](#windows-mingw-gcc)) can synchronize the dependencies with
 ```bash
@@ -40,7 +50,7 @@ or use `uv sync --no-dev` if you only intend to run the core code without develo
     <!--With this configuration in place, you even no longer need to pass the `--compiler=mingw32` flag when trying to compile with `uv run python setup.py build_ext --inplace`.-->
 
 
-## Running tests
+### Running tests
 
 Current CI status of the test suite, run via [GitHub Actions](/.github/workflows/tests.yml) on Python 3.12, is shown in the badge at the top of this file.
 
@@ -57,7 +67,7 @@ Current CI status of the test suite, run via [GitHub Actions](/.github/workflows
 
 ## Usage
 
-Using `uv run python`, you should be able to import `pyafv` from anywhere within the repository directory.
+<!--Using `uv run python`, you should be able to import `pyafv` from anywhere within the repository directory.-->
 The following example demonstrates how to construct a finite-Voronoi diagram:
 ```python
 import numpy as np
@@ -75,14 +85,16 @@ diag = sim.build()
 ```
 The returned object `diag` is a Python `dict` containing these quantities.
 
-#### More example scripts
-To run the example scripts in [`examples`](/examples), you need to install at least one additional dependency, `tqdm`, via `uv add tqdm`. Then you can simply run any script in [`examples`](/examples/) with
+### More examples
+To run the example scripts and notebooks in [`examples`](/examples), you need to install at least one additional dependency `tqdm`.
+
+For local development using `uv`: in the project root, run `uv add tqdm`. Then you can simply run any script in [`examples`](/examples/) with
 ```bash
 uv run <script_name>.py
 ```
 You can also install all optional dependencies (e.g., `tqdm`, `jupyter`) via `uv sync --extra examples` or `uv sync --all-extras`.
 
-* To launch Jupyter Notebook: after `uv` has synced all extra dependencies, start Jupyter with `uv run jupyter notebook`. Do not use your system-level Jupyter, as the Python kernel of the current `uv` environment is not registered there.
+* For developers to launch Jupyter Notebook: after `uv` has synced all extra dependencies, start Jupyter with `uv run jupyter notebook`. Do not use your system-level Jupyter, as the Python kernel of the current `uv` environment is not registered there.
 
     > Jupyter notebooks and media are stored via [**Git LFS**](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage). If you clone the repository without **Git LFS** installed, these files will appear as small text pointers. You can either install Git LFS to fetch them automatically or download the files manually (or download the repository as a ZIP archive) from the GitHub web interface.
 
@@ -137,4 +149,3 @@ This project is licensed under the [MIT License](/LICENSE), which permits free u
     </td>
   </tr>
 </table>
-
