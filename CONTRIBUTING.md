@@ -1,5 +1,7 @@
 # Contributing to PyAFV
 
+> *This contributing guide was drafted by GitHub Copilot and approved by the maintainer.*
+
 First off, **THANK YOU** for considering contributing to PyAFV! We welcome contributions from the community.
 
 Before working on a feature or major change, please raise an [issue](https://github.com/wwang721/pyafv/issues) and/or get in touch with the developers. They may have insights on how to implement the feature or useful advice to save you time.
@@ -177,7 +179,3 @@ If you have questions about contributing, feel free to:
 - Contact the maintainer via email: ww000721@gmail.com
 
 Thank you for helping make PyAFV better!
-
----
-
-*This contributing guide was drafted by GitHub Copilot and approved by the maintainer.*
