@@ -1,6 +1,6 @@
 # Contributing to PyAFV
 
-> *This contributing guide was drafted by GitHub Copilot and approved by the maintainer.*
+> *This contributing guide was drafted by **GitHub Copilot** and approved by the maintainer.*
 
 First off, **THANK YOU** for considering contributing to PyAFV! We welcome contributions from the community.
 
@@ -12,10 +12,9 @@ Much of this guide is based on the [pyqmc CONTRIBUTING.md](https://github.com/Wa
 
 ### 1. Create a fork
 
-Click the "Fork" button on the [PyAFV GitHub page](https://github.com/wwang721/pyafv). Then clone your fork to your local machine:
+Click the "Fork" button on the [PyAFV GitHub page](https://github.com/wwang721/pyafv). Then clone **your fork** to your local machine,
 
 ```bash
-git clone git@github.com:USERNAME/pyafv.git
 cd pyafv
 ```
 
@@ -41,6 +40,7 @@ This installs the core package dependencies along with `cython` and `pytest` req
   [build_ext]
   compiler=mingw32
   ```
+- See more notes for local development in the [README](/README.md).
 
 ### 3. Create a feature branch
 
@@ -81,11 +81,11 @@ Note: We use `rebase` to keep the commit history clean.
 
 ## Coding standards
 
-1. **Functional programming**: Prefer functional styles when possible. Create new classes only when absolutely necessary.
-2. **Single responsibility**: Keep functions small and focused on one task. Each function should do one thing well.
-3. **Avoid Python loops**: Use `numpy` vectorized operations to avoid Python's performance overhead. Operate on batches of data rather than looping.
-4. **Minimize dependencies**: Avoid adding new libraries unless absolutely necessary. If required, discuss with maintainers first.
-5. **Code style**: Follow [PEP 8](https://peps.python.org/pep-0008/) style guidelines for Python code.
+<!--1. **Functional programming**: Prefer functional styles when possible. Create new classes only when absolutely necessary.-->
+1. **Single responsibility**: Keep functions small and focused on one task. Each function should do one thing well.
+2. **Avoid Python loops**: Use `numpy` vectorized operations to avoid Python's performance overhead. Operate on batches of data rather than looping. You can also accelerate by compiling your code to C/C++ using Cython.
+3. **Minimize dependencies**: Avoid adding new libraries unless absolutely necessary. If required, discuss with maintainers first.
+4. **Code style**: Follow [PEP 8](https://peps.python.org/pep-0008/) style guidelines for Python code.
 
 ## Documentation requirements
 
@@ -174,7 +174,7 @@ All submissions require review before merging. Reviewers will check:
 
 If you have questions about contributing, feel free to:
 
-- Open an issue on GitHub
+- Open an [issue](https://github.com/wwang721/pyafv/issues) on GitHub
 - Start a discussion in [GitHub Discussions](https://github.com/wwang721/pyafv/discussions)
 - Contact the maintainer via email: ww000721@gmail.com
 
