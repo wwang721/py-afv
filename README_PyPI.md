@@ -15,11 +15,16 @@ The AFV framework was introduced and developed in, for example, Refs. [[1](#huan
 
 ## Installation
 
-Install **PyAFV** with:
+To install **PyAFV** with `pip`, run:
 ```bash
 pip install pyafv
 ```
-This package requires Python ≥ 3.9 and < 3.15.
+The package supports Python ≥ 3.9 and < 3.15.
+To verify that the installation was successful and that the correct version is installed, run the following in Python:
+```python
+import pyafv
+print(pyafv.__version__)
+```
 
 
 ## Usage
