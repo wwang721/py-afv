@@ -12,14 +12,19 @@ Key public entry points:
 - update_params(): update physical parameters.
 """
 
-from typing import Literal
-import numpy as np
-from scipy.spatial import Voronoi
-from matplotlib import pyplot as plt
-from matplotlib.axes import Axes
+# Enable postponed evaluation of annotations
+from __future__ import annotations
 
+# Only import typing modules when type checking, e.g., in VS Code or IDEs.
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:                             # pragma: no cover
+    from scipy.spatial import Voronoi
+    import matplotlib.axes
+    import numpy
+    import typing
+
+import numpy as np
 from .physical_params import PhysicalParams
-from .backend import backend_impl, _BACKEND_NAME
 
 
 # ---- tiny helpers to avoid tiny allocations in hot loops ----
@@ -45,10 +50,14 @@ class FiniteVoronoiSimulator:
         TypeError: If *phys* is not an instance of PhysicalParams.
     """
 
-    def __init__(self, pts: np.ndarray, phys: PhysicalParams, backend: Literal["cython", "python"] | None = None):
+    def __init__(self, pts: numpy.ndarray, phys: PhysicalParams, backend: typing.Literal["cython", "python"] | None = None):
         """
         Constructor of the simulator.
         """
+        from .backend import backend_impl, _BACKEND_NAME
+        from scipy.spatial import Voronoi
+        self._voronoi = Voronoi
+        
         pts = np.asarray(pts, dtype=float)
         if pts.ndim != 2 or pts.shape[1] != 2:
             raise ValueError("pts must have shape (N,2)")
@@ -102,6 +111,9 @@ class FiniteVoronoiSimulator:
                 - **vertexpair2ridge**: dict mapping vertex index pairs to ridge index.
                 - **vertex_points**: dict mapping vertex index to list of associated point indices.
         """
+
+        Voronoi = self._voronoi
+
         r = self.phys.r
         pts = self.pts
         N = self.N
@@ -750,11 +762,11 @@ class FiniteVoronoiSimulator:
         )
 
     # --------------------- 2D plotting utilities ---------------------
-    def plot_2d(self, ax: Axes | None = None, show: bool = False) -> Axes:
+    def plot_2d(self, ax: matplotlib.axes.Axes | None = None, show: bool = False) -> matplotlib.axes.Axes:
         """
         Build the finite-Voronoi structure and render a 2D snapshot.
 
-        Basically a wrapper of :py:func:`_build_voronoi_with_extensions` and :py:func:`_per_cell_geometry` functions + plot.
+        Basically a wrapper of :py:meth:`_build_voronoi_with_extensions` and :py:meth:`_per_cell_geometry` functions + plot.
 
         Args:
             ax: If provided, draw into this axes; otherwise get the current axes.
@@ -767,6 +779,8 @@ class FiniteVoronoiSimulator:
             vertexpair2ridge, vertex_points) = self._build_voronoi_with_extensions()
 
         geom, vertices_all = self._per_cell_geometry(vor, vertices_all, ridge_vertices_all, num_vertices, vertexpair2ridge)
+
+        from matplotlib import pyplot as plt
 
         if ax is None:
             ax = plt.gca()
@@ -882,15 +896,14 @@ class FiniteVoronoiSimulator:
         return connect
 
     # --------------------- Update positions ---------------------
-    def update_positions(self, pts: np.ndarray, A0: float | np.ndarray | None = None) -> None:
+    def update_positions(self, pts: numpy.ndarray, A0: float | numpy.ndarray | None = None) -> None:
         """
         Update cell center positions.
 
         .. note::
-            If the number of points changes, the preferred areas for all cells
-            are reset to the default value (set when initializing the simulator
-            instance or by :py:func:`update_params`) unless specified via the
-            *A0* argument.
+            If the number of cells changes, the preferred areas for all cells
+            are reset to the default value---defined either at simulator instantiation 
+            or by :py:meth:`update_params`---unless *A0* is explicitly specified.
 
         Args:
             pts: New cell center positions.
@@ -938,7 +951,7 @@ class FiniteVoronoiSimulator:
         self.update_preferred_areas(phys.A0)
 
     # --------------------- Update preferred area list ---------------------
-    def update_preferred_areas(self, A0: float | np.ndarray) -> None:
+    def update_preferred_areas(self, A0: float | numpy.ndarray) -> None:
         """
         Update the preferred areas for all cells.
 

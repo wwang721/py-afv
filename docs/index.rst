@@ -3,6 +3,18 @@
 PyAFV
 ======
 
+.. image:: https://img.shields.io/pypi/v/pyafv?cacheSeconds=300
+   :target: https://pypi.org/project/pyafv
+   :alt: PyPI
+
+.. image:: https://img.shields.io/badge/GitHub-pyafv-brightgreen?logo=github
+   :target: https://github.com/wwang721/pyafv
+   :alt: GitHub
+
+.. image:: https://img.shields.io/badge/License-MIT-green.svg
+   :target: https://opensource.org/licenses/MIT
+   :alt: MIT License
+
 .. image:: ../assets/model_illustration.png
    :width: 300px
    :align: right
@@ -34,12 +46,13 @@ Contents
 --------
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :numbered:
 
    Home <self>
    usage
    examples
+   contributing
    api/index
 
 
