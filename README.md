@@ -27,7 +27,7 @@ The AFV framework was introduced and developed in, for example, Refs. [[1](#huan
 ```bash
 pip install pyafv
 ```
-The package supports Python ≥ 3.10 and < 3.15.
+The package supports Python ≥ 3.10 and < 3.15, including Python 3.14t (the free-threaded, no-GIL build).
 To verify that the installation was successful and that the correct version is installed, run the following in Python:
 ```python
 import pyafv
