@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools>=64", "cython>=3.0", "numpy>=1.26.4"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling", "hatch-cython", "numpy>=1.26.4"]
+build-backend = "hatchling.build"
 
 [project]
 name = "pyafv"
@@ -54,13 +54,23 @@ dev = [
 ]
 
 [tool.setuptools]
-packages = ["pyafv"]  # optional but explicit
+packages = ["pyafv"]
 
-[tool.setuptools.dynamic]
-version = {attr = "pyafv._version.__version__"}
+[tool.hatch.version]
+path = "pyafv/_version.py"
 
-[tool.setuptools.exclude-package-data]
-pyafv = ["*.pyx"]  # exclude from the installation wheel
+[tool.hatch.build.targets.wheel]
+exclude = ["*.pyx", "*.c", "*.cpp"]  # exclude from the installation wheel
+
+[tool.hatch.build.targets.wheel.hooks.cython.options]
+include_numpy = true
+compile_py = false
+cythonize_kwargs = { build_dir = "build" }
+directives = { boundscheck = false, wraparound = false, language_level = 3}
+
+[tool.hatch.build.targets.sdist]
+# Exclude from .tar.gz source distribution
+exclude = ["assets/", "docs/", "examples/jupyter/", "*.md", ".*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -1,5 +1,6 @@
 [![PyPi](https://img.shields.io/pypi/v/pyafv)](https://pypi.org/project/pyafv/)
 [![Downloads](https://img.shields.io/pypi/dm/pyafv.svg)](https://pypi.org/project/pyafv/)
+[![doc](https://img.shields.io/badge/documentation-pyafv.readthedocs.io-yellow.svg?logo=readthedocs)](https://pyafv.readthedocs.io)
 [![Zenodo](https://zenodo.org/badge/1124385738.svg)](https://doi.org/10.5281/zenodo.18091659)
 <!--[![pytest](https://github.com/wwang721/pyafv/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/wwang721/pyafv/actions/workflows/tests.yml?query=branch:main)-->
 [![Tests on all platforms](https://github.com/wwang721/pyafv/actions/workflows/tests_all_platform.yml/badge.svg)](https://github.com/wwang721/pyafv/actions/workflows/tests_all_platform.yml)
