@@ -8,10 +8,11 @@ dynamic = ["version"]
 description = "Python implementation of the active-finite-Voronoi (AFV) model"
 readme = "README_PyPI.md"
 authors = [
-    { name = "Wei Wang (汪巍)", email = "ww000721@gmail.com" }
+    { name = "Wei Wang" },
+    { email = "ww000721@gmail.com" }
 ]
 license = "MIT"
-license-files = ["LICENSE"] # Explicitly include the file
+license-files = ["LICENSE"]  # Explicitly include the file
 requires-python = ">=3.10,<3.15"
 dependencies = [
     "numpy>=1.26.4",
@@ -35,6 +36,7 @@ classifiers = [
 ]
 
 [project.urls]
+"Homepage" = "https://github.com/wwang721/pyafv"
 "Download" = "https://pypi.org/project/pyafv/#files"
 "Source Code" = "https://github.com/wwang721/pyafv"
 "Documentation" = "https://pyafv.readthedocs.io/"
