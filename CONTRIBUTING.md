@@ -20,7 +20,7 @@ cd pyafv
 
 ### 2. Set up your development environment
 
-**PyAFV** uses uses [`uv`](https://docs.astral.sh/uv/) for Python package management &ndash; a single tool to replace `pip` (⚡️10-100x faster), `venv`, and even `conda`,
+**PyAFV** uses [`uv`](https://docs.astral.sh/uv/) for Python package management &ndash; a single tool to replace `pip` (⚡️10-100x faster), `venv`, and even `conda`,
 
 > If you'd like to use your own Python, ensure the `which python` version meets the requirement so `uv` doesn't automatically download a different interpreter; otherwise, I recommend letting `uv` manage everything, including the Python interpreter.
 
@@ -123,7 +123,7 @@ For coverage reports:
 uv run pytest --cov
 ```
 
-Current CI status of the test suite, run via [GitHub Actions](/.github/workflows/tests.yml) on Python 3.12 (with additional test jobs covering all supported platforms and Python versions), is shown in the badges at the top of [READE.md](/README.md).
+Current CI status of the test suite, run via [GitHub Actions](/.github/workflows/tests.yml) on Python 3.12 (with additional test jobs covering all supported platforms and Python versions), is shown in the badges at the top of [README.md](/README.md).
 
 **Notes:**
 * A comparison against the MATLAB implementation from [Huang *et al.*, Soft Matter **19**, 9389 (2023)](https://doi.org/10.1039/D3SM00327B) is included in [test_core.py](/tests/test_core.py) and [test_vary_A0.py](/tests/test_vary_A0.py).
